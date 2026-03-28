@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="cs.colman.talento.ui.splash.SplashFragment"
+        android:label="Splash Screen"
+        tools:layout="@layout/fragment_splash">
+
+        <action
+            android:id="@+id/action_splash_to_login"
+            app:destination="@id/loginFragment"/>
+
+        <action
+            android:id="@+id/action_splash_to_home"
+            app:destination="@id/homeFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="cs.colman.talento.ui.auth.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
+
+        <action
+            android:id="@+id/action_login_to_home"
+            app:destination="@id/homeFragment"/>
+
+        <action
+            android:id="@+id/action_login_to_signup"
+            app:destination="@id/signUpFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="cs.colman.talento.ui.auth.SignUpFragment"
+        android:label="Sign Up"
+        tools:layout="@layout/fragment_sign_up">
+
+        <action
+            android:id="@+id/action_signup_to_home"
+            app:destination="@id/homeFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="cs.colman.talento.ui.home.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_home_to_login"
+            app:destination="@id/loginFragment"/>
+
+        <action
+            android:id="@+id/action_home_to_search"
+            app:destination="@id/searchFragment"/>
+
+        <action
+            android:id="@+id/action_home_to_profile"
+            app:destination="@id/profileFragment"/>
+
+        <action
+            android:id="@+id/action_home_to_appointments"
+            app:destination="@id/appointmentsFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="cs.colman.talento.ui.search.SearchFragment"
+        android:label="Search"
+        tools:layout="@layout/fragment_search">
+
+        <action
+            android:id="@+id/action_search_to_profile"
+            app:destination="@id/profileFragment">
+        <argument
+            android:name="userId"
+            app:argType="string" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="cs.colman.talento.ui.profile.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile">
+
+        <argument
+            android:name="userId"
+            app:argType="string"
+            app:nullable="true"/>
+
+        <action
+            android:id="@+id/action_profile_to_appointment_booking"
+            app:destination="@id/appointmentBookingFragment">
+            <argument
+                android:name="businessId"
+                app:argType="string" />
+        </action>
+
+        <action
+            android:id="@+id/action_profile_self"
+            app:destination="@id/profileFragment">
+            <argument
+                android:name="userId"
+                app:argType="string" />
+        </action>
+
+        <action
+            android:id="@+id/action_profile_to_edit_review"
+            app:destination="@id/reviewFragment">
+
+            <argument
+                android:name="reviewedUserId"
+                app:argType="string" />
+            <argument
+                android:name="reviewId"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/appointmentsFragment"
+        android:name="cs.colman.talento.ui.appointments.AppointmentsFragment"
+        android:label="Appointments"
+        tools:layout="@layout/fragment_appointments">
+
+        <argument
+            android:name="appointmentId"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+
+        <action
+            android:id="@+id/action_appointments_to_profile"
+            app:destination="@id/profileFragment">
+            <argument
+                android:name="userId"
+                app:argType="string" />
+        </action>
+
+        <action
+            android:id="@+id/action_appointments_to_review"
+            app:destination="@id/reviewFragment">
+            <argument
+                android:name="reviewedUserId"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/appointmentBookingFragment"
+        android:name="cs.colman.talento.ui.booking.AppointmentBookingFragment"
+        android:label="Book Appointment"
+        tools:layout="@layout/fragment_appointment_booking">
+
+        <argument
+            android:name="businessId"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_booking_to_appointments"
+            app:destination="@id/appointmentsFragment"
+            app:popUpTo="@id/profileFragment"
+            app:popUpToInclusive="false">
+            <argument
+                android:name="appointmentId"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/reviewFragment"
+        android:name="cs.colman.talento.ui.review.LeaveReviewFragment"
+        android:label="Leave a Review"
+        tools:layout="@layout/fragment_leave_review">
+
+        <argument
+            android:name="reviewedUserId"
+            app:argType="string" />
+        <argument
+            android:name="reviewId"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <action
+            android:id="@+id/action_review_to_profile"
+            app:destination="@id/profileFragment"
+            app:popUpTo="@id/reviewFragment"
+            app:popUpToInclusive="true">
+            <argument
+                android:name="userId"
+                app:argType="string" />
+        </action>
+    </fragment>
+</navigation>
