@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "790671366475",
+    "project_id": "talento-53bb7",
+    "storage_bucket": "talento-53bb7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:790671366475:android:ef3fcd30c6a2cb849c70ce",
+        "android_client_info": {
+          "package_name": "cs.colman.talento"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-u2OgBiTKZxM_8pKsnodYA9ZD3csm_Tc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
